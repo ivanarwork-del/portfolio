@@ -1,0 +1,434 @@
+[
+  {
+    "id": "work-01",
+    "file": "/uploads/work-01.jpg",
+    "caption": "«Айден». 2026. Сталь, ковка, сварка",
+    "category": "Ковка",
+    "original": "img-002-018.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2026
+  },
+  {
+    "id": "work-02",
+    "file": "/uploads/work-02.jpg",
+    "caption": "«Череп Барана». 2025. Сталь, ковка, сварка",
+    "category": "Ковка",
+    "original": "img-002-042.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2025
+  },
+  {
+    "id": "work-03",
+    "file": "/uploads/work-03.jpg",
+    "caption": "«Роза». 2026. Сталь, ковка, сварка",
+    "category": "Ковка",
+    "original": "img-003-056.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2026
+  },
+  {
+    "id": "work-04",
+    "file": "/uploads/work-04.jpg",
+    "caption": "«Пион». 2026. Сталь, ковка, сварка",
+    "category": "Ковка",
+    "original": "img-003-072.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2026
+  },
+  {
+    "id": "work-05",
+    "file": "/uploads/work-05.jpg",
+    "caption": "«Первое 2.0». 2025. Сталь, ковка, сварка",
+    "category": "Ковка",
+    "original": "img-003-092.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2025
+  },
+  {
+    "id": "work-06",
+    "file": "/uploads/work-06.jpg",
+    "caption": "«Первое 3.0». 2025. Сталь, ковка, сварка",
+    "category": "Ковка",
+    "original": "img-003-106.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2025
+  },
+  {
+    "id": "work-07",
+    "file": "/uploads/work-07.jpg",
+    "caption": "Кованые подсвечники «ИЗА и БИЛ». 2025. Совместно с Наташей Одинцовой и Владимиром Шкваренко",
+    "category": "Ковка",
+    "original": "img-004-130.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2025
+  },
+  {
+    "id": "work-08",
+    "file": "/uploads/work-08.jpg",
+    "caption": "Дипломный проект — скульптурная композиция «Шёпот усадебных вечеров». 2026. Сталь",
+    "category": "Ковка",
+    "original": "img-005-136.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2026
+  },
+  {
+    "id": "work-09",
+    "file": "/uploads/work-09.jpg",
+    "caption": "«Лик Земли». 2025. Керамика",
+    "category": "Керамика",
+    "original": "img-008-188.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2025
+  },
+  {
+    "id": "work-10",
+    "file": "/uploads/work-10.jpg",
+    "caption": "«Пеньки». 2024. Керамика",
+    "category": "Керамика",
+    "original": "img-008-192.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2024
+  },
+  {
+    "id": "work-11",
+    "file": "/uploads/work-11.jpg",
+    "caption": "«Ки́шки». 2024. Керамика",
+    "category": "Керамика",
+    "original": "img-009-202.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2024
+  },
+  {
+    "id": "work-12",
+    "file": "/uploads/work-12.jpg",
+    "caption": "«Ксенофлора». 2024. Керамика",
+    "category": "Керамика",
+    "original": "img-009-222.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2024
+  },
+  {
+    "id": "work-13",
+    "file": "/uploads/work-13.jpg",
+    "caption": "Дипломная картина «Рыбалка». 2019. Холст, масло, 100×120",
+    "category": "Живопись",
+    "original": "img-006-160.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2019
+  },
+  {
+    "id": "work-14",
+    "file": "/uploads/work-14.jpg",
+    "caption": "«С тем, что внутри». Автопортрет. 2026. Картон, масло, 45×60",
+    "category": "Живопись",
+    "original": "img-007-186.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2026
+  },
+  {
+    "id": "work-15",
+    "file": "/uploads/work-15.jpg",
+    "caption": "Морозный рассвет рыбака на большом озере, Бытошь. 2026. Оргалит, масло, 49×89",
+    "category": "Живопись",
+    "original": "img-016-266.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2026
+  },
+  {
+    "id": "work-16",
+    "file": "/uploads/work-16.jpg",
+    "caption": "Февраль в Которе, Черногория. 2025. Холст, масло, 50×60",
+    "category": "Живопись",
+    "original": "img-013-254.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2025
+  },
+  {
+    "id": "work-17",
+    "file": "/uploads/work-17.jpg",
+    "caption": "«Дед и пряники». 2022. Бумага, масло, 48×68",
+    "category": "Живопись",
+    "original": "img-016-262.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2022
+  },
+  {
+    "id": "work-18",
+    "file": "/uploads/work-18.jpg",
+    "caption": "Вечер на море. 2022. Холст, масло, 30×51",
+    "category": "Живопись",
+    "original": "img-013-252.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2022
+  },
+  {
+    "id": "work-19",
+    "file": "/uploads/work-19.jpg",
+    "caption": "Натюрморт с яблоками. 2021. Бумага, масло, 50×70",
+    "category": "Живопись",
+    "original": "img-017-268.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2021
+  },
+  {
+    "id": "work-20",
+    "file": "/uploads/work-20.jpg",
+    "caption": "Натюрморт с лимонами и грушами. 2021. Бумага, масло, 50×70",
+    "category": "Живопись",
+    "original": "img-019-272.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2021
+  },
+  {
+    "id": "work-21",
+    "file": "/uploads/work-21.jpg",
+    "caption": "Натюрморт на окне. 2021. Бумага, масло, 50×70",
+    "category": "Живопись",
+    "original": "img-022-282.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2021
+  },
+  {
+    "id": "work-22",
+    "file": "/uploads/work-22.jpg",
+    "caption": "Натюрморт под Красным знаменем. 2020. Бумага, масло, 57×77",
+    "category": "Живопись",
+    "original": "img-015-258.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2020
+  },
+  {
+    "id": "work-23",
+    "file": "/uploads/work-23.jpg",
+    "caption": "Корабельная роща, Дятьково. Этюд, 2018. Оргалит, масло, 25×30",
+    "category": "Живопись",
+    "original": "img-010-240.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2018
+  },
+  {
+    "id": "work-24",
+    "file": "/uploads/work-24.jpg",
+    "caption": "Вечер у большого озера, Бытошь. Этюд, 2018. Оргалит, масло, 11×23",
+    "category": "Живопись",
+    "original": "img-021-278.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2018
+  },
+  {
+    "id": "work-25",
+    "file": "/uploads/work-25.jpg",
+    "caption": "Вечер на школьном дворе, Дятьково. Этюд, 2018. Оргалит, масло, 27×20",
+    "category": "Живопись",
+    "original": "img-023-290.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2018
+  },
+  {
+    "id": "work-26",
+    "file": "/uploads/work-26.jpg",
+    "caption": "Композиция «Городской пейзаж». 2017. Оргалит, масло, 21×60",
+    "category": "Живопись",
+    "original": "img-020-274.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2017
+  },
+  {
+    "id": "work-27",
+    "file": "/uploads/work-27.jpg",
+    "caption": "На карьере. Этюд, 2017. Оргалит, масло, 20×30",
+    "category": "Живопись",
+    "original": "img-015-260.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2017
+  },
+  {
+    "id": "work-28",
+    "file": "/uploads/work-28.jpg",
+    "caption": "По дороге на карьер, где-то рядом с Петровским. Этюд, 2017. Оргалит, масло, 15×17",
+    "category": "Живопись",
+    "original": "img-024-296.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2017
+  },
+  {
+    "id": "work-29",
+    "file": "/uploads/work-29.jpg",
+    "caption": "Речка «Бытошка», вид на плотик, Бытошь. 2016. Холст, масло, 34×43",
+    "category": "Живопись",
+    "original": "img-010-236.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-30",
+    "file": "/uploads/work-30.jpg",
+    "caption": "Речка «Бытошка», вид с плотика, Бытошь. Этюд, 2016. Оргалит, масло, 21×35",
+    "category": "Живопись",
+    "original": "img-023-288.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-31",
+    "file": "/uploads/work-31.jpg",
+    "caption": "Пляж на больничном озере, Дятьково. Этюд, 2016. Оргалит, масло, 17×21",
+    "category": "Живопись",
+    "original": "img-010-238.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-32",
+    "file": "/uploads/work-32.jpg",
+    "caption": "Лесная тропинка на Карьере. 2016. Холст, масло, 40×50",
+    "category": "Живопись",
+    "original": "img-014-256.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-33",
+    "file": "/uploads/work-33.jpg",
+    "caption": "Блестящий натюрморт. 2016. Холст, масло, 40×50",
+    "category": "Живопись",
+    "original": "img-021-280.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-34",
+    "file": "/uploads/work-34.jpg",
+    "caption": "Натюрморт с чайником. 2016. Холст, масло, 40×50",
+    "category": "Живопись",
+    "original": "img-024-292.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-35",
+    "file": "/uploads/work-35.jpg",
+    "caption": "Корабельная роща, Дятьково. Этюд, 2016. Оргалит, масло, 17×30",
+    "category": "Живопись",
+    "original": "img-023-284.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-36",
+    "file": "/uploads/work-36.jpg",
+    "caption": "Корабельная роща, Дятьково. Этюд, 2016. Оргалит, масло, 17×21",
+    "category": "Живопись",
+    "original": "img-024-294.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2016
+  },
+  {
+    "id": "work-37",
+    "file": "/uploads/work-37.jpg",
+    "caption": "Статуи у окна на 3 этаже РГХПУ им. С.Г. Строганова. 2022. Бумага, уголь, 60×80",
+    "category": "Графика",
+    "original": "img-011-242.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2022
+  },
+  {
+    "id": "work-38",
+    "file": "/uploads/work-38.jpg",
+    "caption": "Главный холл РГХПУ им. С.Г. Строганова. 2022. Бумага, уголь, 60×85",
+    "category": "Графика",
+    "original": "img-012-244.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2022
+  },
+  {
+    "id": "work-39",
+    "file": "/uploads/work-39.jpg",
+    "caption": "Фигура сидящей натурщицы в сложном ракурсе. 2022. Бумага, уголь, 60×80",
+    "category": "Графика",
+    "original": "img-012-246.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2022
+  },
+  {
+    "id": "work-40",
+    "file": "/uploads/work-40.jpg",
+    "caption": "«Дед и пряники». 2022. Бумага, уголь, 61×85",
+    "category": "Графика",
+    "original": "img-016-264.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2022
+  },
+  {
+    "id": "work-41",
+    "file": "/uploads/work-41.jpg",
+    "caption": "Портрет натурщика. 2019. Бумага, уголь, 48×52",
+    "category": "Графика",
+    "original": "img-020-276.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2019
+  },
+  {
+    "id": "work-42",
+    "file": "/uploads/work-42.jpg",
+    "caption": "Портрет натурщика с руками. 2018. Бумага, карандаш, 50×70",
+    "category": "Графика",
+    "original": "img-012-250.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2018
+  },
+  {
+    "id": "work-43",
+    "file": "/uploads/work-43.jpg",
+    "caption": "Геракл. 2018. Бумага, карандаш, 50×70",
+    "category": "Графика",
+    "original": "img-012-248.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2018
+  },
+  {
+    "id": "work-44",
+    "file": "/uploads/work-44.jpg",
+    "caption": "Портрет одногруппницы Маши в дизайнерской шляпе. 2018. Бумага, уголь, 60×80",
+    "category": "Графика",
+    "original": "img-018-270.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": 2018
+  },
+  {
+    "id": "work-45",
+    "file": "/uploads/work-45.jpg",
+    "caption": "Обнажённая натура. Холст, масло",
+    "category": "Живопись",
+    "original": "painting-3.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": null
+  },
+  {
+    "id": "work-46",
+    "file": "/uploads/work-46.jpg",
+    "caption": "Натюрморт с белой вазой и чайником. Холст, масло",
+    "category": "Живопись",
+    "original": "painting-4.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": null
+  },
+  {
+    "id": "work-47",
+    "file": "/uploads/work-47.jpg",
+    "caption": "Осенний натюрморт. Холст, масло",
+    "category": "Живопись",
+    "original": "painting-5.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": null
+  },
+  {
+    "id": "work-48",
+    "file": "/uploads/work-48.jpg",
+    "caption": "Этюд драпировки. Холст, масло",
+    "category": "Живопись",
+    "original": "painting-6.jpg",
+    "addedAt": "2026-07-02T20:00:00.000Z",
+    "year": null
+  }
+]

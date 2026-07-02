@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кристина Харламова — художник</title>
+<style>
+  :root{
+    --bg:#0e0b16;
+    --ink:#fdfcff;
+    --muted:#a89fc0;
+    --c1:#ff3d7f;  /* фуксия */
+    --c2:#ffb800;  /* янтарь */
+    --c3:#22d3ee;  /* циан */
+    --c4:#a78bfa;  /* сирень */
+    --card:#171226;
+    --line:rgba(253,252,255,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--c1);color:#fff}
+
+  /* ---------- шапка ---------- */
+  header{
+    position:relative;
+    padding:110px 6vw 70px;
+    isolation:isolate;
+  }
+  .blob{
+    position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;z-index:-1;
+    animation:float 14s ease-in-out infinite alternate;
+  }
+  .blob.b1{width:420px;height:420px;background:var(--c1);top:-140px;left:-80px}
+  .blob.b2{width:360px;height:360px;background:var(--c3);top:40px;right:-100px;animation-delay:-5s}
+  .blob.b3{width:280px;height:280px;background:var(--c2);bottom:-120px;left:38vw;animation-delay:-9s}
+  @keyframes float{from{transform:translateY(0) scale(1)}to{transform:translateY(40px) scale(1.12)}}
+
+  .kicker{
+    display:inline-block;
+    font-size:13px;letter-spacing:.35em;text-transform:uppercase;
+    color:var(--c2);
+    border:1px solid rgba(255,184,0,.4);
+    padding:8px 18px;border-radius:999px;
+    margin-bottom:28px;
+  }
+  h1{
+    font-size:clamp(38px,7vw,88px);
+    line-height:1.02;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-.02em;
+  }
+  h1 .grad{
+    background:linear-gradient(92deg,var(--c1),var(--c2) 45%,var(--c3));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .subtitle{
+    margin-top:22px;max-width:600px;
+    font-size:clamp(16px,2.2vw,20px);
+    color:var(--muted);
+  }
+  .cta{margin-top:36px;display:inline-flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:700;font-size:15px;
+    padding:14px 30px;border-radius:999px;transition:.25s;border:none;cursor:pointer;
+  }
+  .btn-hot{
+    color:#160b12;
+    background:linear-gradient(92deg,var(--c1),var(--c2));
+    box-shadow:0 8px 30px rgba(255,61,127,.35);
+  }
+  .btn-hot:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(255,61,127,.5)}
+  .btn-ghost{color:var(--ink);border:1.5px solid rgba(253,252,255,.25);background:none}
+  .btn-ghost:hover{border-color:var(--c3);color:var(--c3)}
+
+  /* ---------- обо мне ---------- */
+  .about{
+    display:grid;grid-template-columns:340px 1fr;gap:44px;
+    padding:30px 6vw 60px;align-items:start;
+  }
+  @media(max-width:860px){.about{grid-template-columns:1fr}}
+  .about .photo{
+    border-radius:22px;overflow:hidden;position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .about .photo::before{
+    content:'';position:absolute;inset:0;z-index:1;
+    background:linear-gradient(200deg,rgba(255,61,127,.18),transparent 45%);
+    pointer-events:none;
+  }
+  .about .photo img{width:100%;display:block}
+  .about h2, .expo h3{
+    font-size:clamp(22px,3vw,32px);text-transform:uppercase;font-weight:900;margin-bottom:18px;
+  }
+  .about h2 span{color:var(--c2)}
+  .bio{display:grid;gap:12px;color:var(--muted);font-size:16px;line-height:1.55}
+  .bio b{color:var(--ink)}
+  .bio .row{
+    display:flex;gap:14px;align-items:baseline;
+  }
+  .bio .year{
+    flex:0 0 64px;font-weight:800;color:var(--c3);font-size:15px;
+  }
+  .expo{margin-top:34px}
+  .expo h3{font-size:18px;margin-bottom:14px}
+  .expo ul{list-style:none;display:grid;gap:10px;color:var(--muted);font-size:15px;line-height:1.5}
+  .expo li::before{content:'✦';color:var(--c1);margin-right:10px}
+
+  /* ---------- галерея ---------- */
+  .gallery-wrap{padding:30px 6vw 90px}
+  .section-head{
+    display:flex;align-items:baseline;gap:18px;margin-bottom:22px;flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(26px,4vw,40px);text-transform:uppercase;font-weight:900;
+  }
+  .section-head .count{
+    font-size:14px;color:var(--muted);
+    background:var(--card);padding:6px 14px;border-radius:999px;
+  }
+  .filters-bar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:30px;align-items:center}
+  .filters{display:flex;gap:10px;flex-wrap:wrap}
+  .sortbox{display:flex;gap:8px;align-items:center}
+  .sortbox .lbl{font-size:13px;color:var(--muted)}
+  .chip{
+    border:1.5px solid var(--line);background:none;color:var(--muted);
+    font-size:14px;font-weight:700;padding:9px 20px;border-radius:999px;cursor:pointer;transition:.2s;
+  }
+  .chip:hover{color:var(--ink);border-color:rgba(253,252,255,.35)}
+  .chip.on{
+    color:#160b12;border-color:transparent;
+    background:linear-gradient(92deg,var(--c1),var(--c2));
+  }
+  .masonry{columns:3;column-gap:18px}
+  @media(max-width:900px){.masonry{columns:2}}
+  @media(max-width:560px){.masonry{columns:1}}
+  .ph{
+    position:relative;display:block;width:100%;margin-bottom:18px;
+    border-radius:18px;overflow:hidden;cursor:zoom-in;
+    break-inside:avoid;background:var(--card);transform:translateZ(0);
+  }
+  .ph img{width:100%;display:block;transition:transform .45s ease}
+  .ph::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 45%,rgba(14,11,22,.9));
+    opacity:0;transition:.35s;
+  }
+  .ph:hover img{transform:scale(1.06)}
+  .ph:hover::after{opacity:1}
+  .ph .cap{
+    position:absolute;left:16px;right:16px;bottom:14px;z-index:1;
+    font-size:13.5px;font-weight:600;opacity:0;transform:translateY(8px);
+    transition:.35s;line-height:1.35;
+  }
+  .ph:hover .cap{opacity:1;transform:translateY(0)}
+  .ph .tag{
+    position:absolute;top:12px;left:12px;z-index:1;
+    font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(14,11,22,.72);backdrop-filter:blur(4px);
+    padding:5px 12px;border-radius:999px;color:var(--c2);
+  }
+  .empty{
+    text-align:center;color:var(--muted);padding:80px 20px;
+    border:1.5px dashed rgba(253,252,255,.15);border-radius:22px;
+  }
+  .empty a{color:var(--c3)}
+
+  /* ---------- лайтбокс ---------- */
+  .lb{
+    position:fixed;inset:0;z-index:50;display:none;
+    background:rgba(10,8,16,.94);
+    align-items:center;justify-content:center;flex-direction:column;
+  }
+  .lb.open{display:flex}
+  .lb img{
+    max-width:92vw;max-height:80vh;border-radius:12px;
+    box-shadow:0 20px 80px rgba(0,0,0,.6);
+  }
+  .lb .lb-cap{margin-top:16px;color:var(--muted);font-size:15px;max-width:80vw;text-align:center}
+  .lb button{
+    position:absolute;background:none;border:none;color:#fff;cursor:pointer;
+    font-size:34px;line-height:1;padding:14px;opacity:.7;transition:.2s;
+  }
+  .lb button:hover{opacity:1;color:var(--c2)}
+  .lb .x{top:14px;right:20px}
+  .lb .prev{left:12px;top:50%;transform:translateY(-50%)}
+  .lb .next{right:12px;top:50%;transform:translateY(-50%)}
+
+  /* ---------- подвал ---------- */
+  footer{
+    padding:70px 6vw 50px;
+    background:linear-gradient(180deg,transparent,rgba(255,61,127,.07));
+    text-align:center;
+  }
+  footer h2{font-size:clamp(24px,4vw,36px);text-transform:uppercase;font-weight:900}
+  footer p{color:var(--muted);margin:14px 0 26px}
+  .socials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .socials a{
+    color:var(--muted);text-decoration:none;font-size:14px;font-weight:700;
+    border:1.5px solid var(--line);padding:10px 22px;border-radius:999px;transition:.2s;
+  }
+  .socials a:hover{color:var(--c3);border-color:var(--c3)}
+  .tiny{margin-top:44px;font-size:12px;color:rgba(168,159,192,.5)}
+  .tiny a{color:inherit}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <span class="kicker">Портфолио · 2026</span>
+  <h1 id="siteTitle">КРИСТИНА <span class="grad">ХАРЛАМОВА</span></h1>
+  <p class="subtitle" id="siteSubtitle">художник · живопись, графика, художественная ковка, керамика</p>
+  <div class="cta">
+    <a class="btn btn-hot" href="#gallery">Смотреть работы ↓</a>
+    <a class="btn btn-ghost" href="#about">Обо мне</a>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="photo"><img src="/about.jpg" alt="Кристина Харламова"></div>
+  <div>
+    <h2>Обо <span>мне</span></h2>
+    <div class="bio">
+      <div class="row"><span class="year">1998</span><span>родилась в городе <b>Дятьково</b></span></div>
+      <div class="row"><span class="year">2019</span><span>окончила Живописное отделение <b>Брянского областного колледжа искусств</b></span></div>
+      <div class="row"><span class="year">2023</span><span>окончила бакалавриат <b>РГХПУ им. С.Г. Строганова</b></span></div>
+      <div class="row"><span class="year">с 2023</span><span>занимаюсь педагогической деятельностью: преподаю <b>академический рисунок и живопись</b>, готовлю учеников к поступлению в вузы</span></div>
+      <div class="row"><span class="year">с 2025</span><span>член <b>Творческого Союза Художников России</b></span></div>
+    </div>
+    <div class="expo">
+      <h3>Выставки</h3>
+      <ul>
+        <li>«Взгляд на Восток. Традиции изобразительных школ России и Китая», проект «Строгановские традиции» (2025)</li>
+        <li>Лауреат международной выставки-конкурса «Взгляд на Восток» (2023)</li>
+        <li>Выставка художников-педагогов и их учеников «Траектория развития», Рязань (2023)</li>
+        <li>Персональная выставка в РГХПУ им. С.Г. Строганова (2022)</li>
+        <li>Выставки в Москве и Московской области</li>
+        <li>Выставки в Брянске и Брянской области</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<main class="gallery-wrap" id="gallery">
+  <div class="section-head">
+    <h2>Работы</h2>
+    <span class="count" id="photoCount"></span>
+  </div>
+  <div class="filters-bar">
+    <div class="filters" id="filters"></div>
+    <div class="sortbox">
+      <span class="lbl">Сортировка:</span>
+      <button class="chip on" id="sortNew">Сначала новые</button>
+      <button class="chip" id="sortOld">Сначала старые</button>
+    </div>
+  </div>
+  <div class="masonry" id="masonry"></div>
+  <div class="empty" id="empty" style="display:none">
+    Пока здесь пусто. Добавьте первые работы через <a href="/admin">админку</a>.
+  </div>
+</main>
+
+<footer>
+  <h2>Давайте создадим что-то яркое</h2>
+  <p>Открыта для заказов, выставок, преподавания и коллабораций.</p>
+  <a class="btn btn-hot" href="mailto:ivanar.work@gmail.com">Написать мне</a>
+  <div class="socials">
+    <a href="https://instagram.com/harlamovaart" target="_blank" rel="noopener">Instagram @harlamovaart</a>
+    <a href="https://www.tiktok.com/@harlamovaart" target="_blank" rel="noopener">TikTok · Харламова вытворяет</a>
+  </div>
+  <div class="tiny"><a href="/admin">вход для владельца</a></div>
+</footer>
+
+<div class="lb" id="lb">
+  <button class="x" aria-label="Закрыть">✕</button>
+  <button class="prev" aria-label="Назад">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="next" aria-label="Вперёд">›</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+let photos = [];   // все работы
+let shown = [];    // отфильтрованные
+let cur = 0;
+let activeCat = 'Все';
+let sortDir = 'new'; // new | old
+const CAT_ORDER = ['Живопись','Графика','Ковка','Керамика'];
+
+document.getElementById('sortNew').onclick = ()=>setSort('new');
+document.getElementById('sortOld').onclick = ()=>setSort('old');
+function setSort(d){
+  sortDir = d;
+  document.getElementById('sortNew').classList.toggle('on', d==='new');
+  document.getElementById('sortOld').classList.toggle('on', d==='old');
+  render();
+}
+
+async function load(){
+  const [site, list] = await Promise.all([
+    fetch('/api/site').then(r=>r.json()),
+    fetch('/api/photos').then(r=>r.json())
+  ]);
+  if(site.title){
+    const words = site.title.trim().split(' ');
+    const last = words.pop();
+    document.getElementById('siteTitle').innerHTML =
+      words.join(' ') + (words.length? ' ':'') + '<span class="grad">'+esc(last)+'</span>';
+    document.title = site.title + ' — художник';
+  }
+  if(site.subtitle) document.getElementById('siteSubtitle').textContent = site.subtitle;
+  photos = list;
+  renderFilters();
+  render();
+}
+
+function cats(){
+  const present = [...new Set(photos.map(p=>p.category).filter(Boolean))];
+  present.sort((a,b)=>{
+    const ia=CAT_ORDER.indexOf(a), ib=CAT_ORDER.indexOf(b);
+    return (ia<0?99:ia)-(ib<0?99:ib);
+  });
+  return present;
+}
+
+function renderFilters(){
+  const f = document.getElementById('filters');
+  f.innerHTML = '';
+  const all = ['Все', ...cats()];
+  if(all.length <= 2){ return; }
+  all.forEach(c=>{
+    const b = document.createElement('button');
+    b.className = 'chip' + (c===activeCat?' on':'');
+    b.textContent = c;
+    b.onclick = ()=>{ activeCat=c; renderFilters(); render(); };
+    f.appendChild(b);
+  });
+}
+
+function render(){
+  const m = document.getElementById('masonry');
+  const empty = document.getElementById('empty');
+  const count = document.getElementById('photoCount');
+  shown = activeCat==='Все' ? [...photos] : photos.filter(p=>p.category===activeCat);
+  shown.sort((a,b)=>{
+    const ya = a.year || 0, yb = b.year || 0;
+    return sortDir==='new' ? yb-ya : (ya||9999)-(yb||9999);
+  });
+  m.innerHTML = '';
+  count.textContent = shown.length ? plural(shown.length) : '';
+  empty.style.display = photos.length ? 'none' : 'block';
+  shown.forEach((p,i)=>{
+    const a = document.createElement('a');
+    a.className = 'ph';
+    a.innerHTML =
+      (p.category && activeCat==='Все' ? '<span class="tag">'+esc(p.category)+'</span>' : '') +
+      '<img loading="lazy" src="'+p.file+'" alt="'+escAttr(p.caption||'')+'">' +
+      (p.caption ? '<span class="cap">'+esc(p.caption)+'</span>' : '');
+    a.onclick = ()=>openLb(i);
+    m.appendChild(a);
+  });
+}
+
+function plural(n){
+  const m10=n%10, m100=n%100;
+  if(m10===1 && m100!==11) return n+' работа';
+  if(m10>=2 && m10<=4 && (m100<10||m100>=20)) return n+' работы';
+  return n+' работ';
+}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function escAttr(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+
+const lb = document.getElementById('lb');
+function openLb(i){cur=i;showLb();lb.classList.add('open');document.body.style.overflow='hidden'}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+function showLb(){
+  document.getElementById('lbImg').src = shown[cur].file;
+  document.getElementById('lbCap').textContent = shown[cur].caption || '';
+}
+function step(d){cur=(cur+d+shown.length)%shown.length;showLb()}
+
+lb.querySelector('.x').onclick = closeLb;
+lb.querySelector('.prev').onclick = e=>{e.stopPropagation();step(-1)};
+lb.querySelector('.next').onclick = e=>{e.stopPropagation();step(1)};
+lb.onclick = e=>{if(e.target===lb)closeLb()};
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')step(-1);
+  if(e.key==='ArrowRight')step(1);
+});
+
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Админка — портфолио</title>
+<style>
+  :root{
+    --bg:#0e0b16;--ink:#fdfcff;--muted:#a89fc0;
+    --c1:#ff3d7f;--c2:#ffb800;--c3:#22d3ee;
+    --card:#171226;--line:rgba(253,252,255,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif}
+  a{color:var(--c3)}
+  .wrap{max-width:1060px;margin:0 auto;padding:40px 24px 80px}
+  h1{font-size:28px;text-transform:uppercase;font-weight:900}
+  h1 span{background:linear-gradient(92deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:34px;flex-wrap:wrap}
+  .btn{border:none;cursor:pointer;font-weight:700;font-size:14px;padding:11px 22px;border-radius:999px;transition:.2s;text-decoration:none;display:inline-block;color:var(--ink);background:var(--card)}
+  .btn:hover{filter:brightness(1.25)}
+  .btn-hot{color:#160b12;background:linear-gradient(92deg,var(--c1),var(--c2))}
+  .btn-hot:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn-danger{background:rgba(255,61,127,.15);color:var(--c1)}
+
+  /* вход */
+  .login{max-width:380px;margin:14vh auto;background:var(--card);padding:36px;border-radius:22px;border:1px solid var(--line)}
+  .login h1{margin-bottom:8px}
+  .login p{color:var(--muted);font-size:14px;margin-bottom:22px}
+  input[type=password],input[type=text]{
+    width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);
+    background:#0f0c1a;color:var(--ink);font-size:15px;outline:none;transition:.2s;
+  }
+  input:focus{border-color:var(--c3)}
+  .login .btn{width:100%;margin-top:14px}
+  .err{color:var(--c1);font-size:13px;margin-top:10px;min-height:16px}
+
+  /* дроп-зона */
+  .drop{
+    border:2px dashed rgba(34,211,238,.4);border-radius:22px;
+    padding:46px 24px;text-align:center;color:var(--muted);
+    transition:.25s;cursor:pointer;margin-bottom:14px;
+  }
+  .drop:hover,.drop.over{border-color:var(--c2);background:rgba(255,184,0,.05);color:var(--ink)}
+  .drop b{color:var(--ink)}
+  .drop .ico{font-size:38px;display:block;margin-bottom:10px}
+  .bar{height:6px;border-radius:99px;background:var(--card);overflow:hidden;margin-bottom:30px;display:none}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(92deg,var(--c1),var(--c2),var(--c3));transition:width .3s}
+  .status{font-size:13px;color:var(--muted);margin:-22px 0 26px;min-height:16px}
+
+  /* сетка фото */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+  .card{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+  .card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+  .card .body{padding:12px}
+  .card input{font-size:13px;padding:9px 12px;margin-bottom:10px}
+  .card .row{display:flex;gap:8px}
+  .card .row .btn{flex:1;padding:8px 10px;font-size:12.5px;text-align:center}
+  .none{color:var(--muted);padding:50px;text-align:center}
+
+  /* настройки */
+  details{margin:44px 0 0;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:700}
+  .set{padding:4px 20px 20px;display:grid;gap:12px;max-width:460px}
+  .set label{font-size:13px;color:var(--muted)}
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+    background:linear-gradient(92deg,var(--c1),var(--c2));color:#160b12;font-weight:700;
+    padding:12px 26px;border-radius:999px;transition:.3s;z-index:99;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- экран входа -->
+<div id="loginView" style="display:none">
+  <div class="login">
+    <h1>Вход в <span>админку</span></h1>
+    <p>Управление фотогалереей портфолио</p>
+    <input type="password" id="pass" placeholder="Пароль" autofocus>
+    <button class="btn btn-hot" onclick="login()">Войти</button>
+    <div class="err" id="loginErr"></div>
+    <p style="margin-top:18px"><a href="/">← на сайт</a></p>
+  </div>
+</div>
+
+<!-- админка -->
+<div id="adminView" class="wrap" style="display:none">
+  <div class="topbar">
+    <h1>Админка <span>галереи</span></h1>
+    <div>
+      <a class="btn" href="/" target="_blank">Открыть сайт</a>
+      <button class="btn btn-danger" onclick="logout()">Выйти</button>
+    </div>
+  </div>
+
+  <div style="margin-bottom:12px">
+    <label style="font-size:13px;color:var(--muted)">Категория для новых работ:</label>
+    <select id="upCat" style="margin-left:8px;padding:9px 14px;border-radius:10px;border:1.5px solid var(--line);background:#0f0c1a;color:var(--ink);font-size:14px">
+      <option>Живопись</option>
+      <option>Графика</option>
+      <option>Ковка</option>
+      <option>Керамика</option>
+      <option value="">Без категории</option>
+    </select>
+    <label style="font-size:13px;color:var(--muted);margin-left:14px">Год:</label>
+    <input type="number" id="upYear" placeholder="2026" min="1900" max="2100"
+           style="width:90px;margin-left:8px;padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);background:#0f0c1a;color:var(--ink);font-size:14px">
+  </div>
+  <div class="drop" id="drop">
+    <span class="ico">🎨</span>
+    <b>Перетащите фото работ сюда</b> или нажмите, чтобы выбрать<br>
+    <small>JPG, PNG, WebP, GIF · можно сразу несколько</small>
+    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+  </div>
+  <div class="bar" id="bar"><i id="barFill"></i></div>
+  <div class="status" id="status"></div>
+
+  <div class="grid" id="grid"></div>
+  <div class="none" id="none" style="display:none">Фотографий пока нет — загрузите первые!</div>
+
+  <details>
+    <summary>⚙️ Настройки сайта</summary>
+    <div class="set">
+      <label>Имя на главной (заголовок)</label>
+      <input type="text" id="setTitle">
+      <label>Подзаголовок</label>
+      <input type="text" id="setSubtitle">
+      <label>Новый пароль (мин. 4 символа, оставьте пустым — без изменений)</label>
+      <input type="password" id="setPass" placeholder="••••••">
+      <button class="btn btn-hot" onclick="saveSettings()">Сохранить</button>
+    </div>
+  </details>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+async function api(url, data){
+  const r = await fetch(url, data ? {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)
+  } : undefined);
+  return r.json();
+}
+function toast(msg){
+  const t=$('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// ---------- вход ----------
+async function init(){
+  const me = await api('/api/me');
+  if(me.authed){ showAdmin(); } else { $('loginView').style.display='block'; }
+}
+async function login(){
+  const r = await api('/api/login',{password:$('pass').value});
+  if(r.ok){ $('loginView').style.display='none'; showAdmin(); }
+  else $('loginErr').textContent = r.error || 'Ошибка';
+}
+$('pass').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+async function logout(){ await api('/api/logout',{}); location.reload(); }
+
+async function showAdmin(){
+  $('adminView').style.display='block';
+  const site = await api('/api/site');
+  $('setTitle').value = site.title||'';
+  $('setSubtitle').value = site.subtitle||'';
+  refresh();
+}
+
+// ---------- список ----------
+async function refresh(){
+  const photos = await api('/api/photos');
+  const g=$('grid'); g.innerHTML='';
+  $('none').style.display = photos.length?'none':'block';
+  photos.forEach(p=>{
+    const d=document.createElement('div');
+    d.className='card';
+    const cats = ['Живопись','Графика','Ковка','Керамика'];
+    const opts = ['<option value="">Без категории</option>']
+      .concat(cats.map(c=>`<option${p.category===c?' selected':''}>${c}</option>`)).join('');
+    d.innerHTML = `<img src="${p.file}" alt="">
+      <div class="body">
+        <input type="text" placeholder="Подпись…" value="${escAttr(p.caption||'')}"
+               onchange="setCaption('${p.id}',this.value)">
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <select onchange="setCategory('${p.id}',this.value)"
+                  style="flex:1;padding:8px 10px;border-radius:10px;border:1.5px solid var(--line);background:#0f0c1a;color:var(--ink);font-size:13px">
+            ${opts}
+          </select>
+          <input type="number" value="${p.year||''}" placeholder="Год" min="1900" max="2100"
+                 onchange="setYear('${p.id}',this.value)"
+                 style="width:76px;padding:8px 10px;border-radius:10px;border:1.5px solid var(--line);background:#0f0c1a;color:var(--ink);font-size:13px;margin:0">
+        </div>
+        <div class="row">
+          <button class="btn btn-danger" onclick="del('${p.id}')">Удалить</button>
+        </div>
+      </div>`;
+    g.appendChild(d);
+  });
+}
+function escAttr(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+
+async function del(id){
+  await api('/api/delete',{id});
+  toast('Фото удалено');
+  refresh();
+}
+async function setCaption(id,caption){
+  await api('/api/caption',{id,caption});
+  toast('Подпись сохранена');
+}
+async function setCategory(id,category){
+  await api('/api/caption',{id,category});
+  toast('Категория сохранена');
+}
+async function setYear(id,year){
+  await api('/api/caption',{id,year});
+  toast('Год сохранён');
+}
+
+// ---------- загрузка ----------
+const drop=$('drop'), fi=$('fileInput');
+drop.onclick=()=>fi.click();
+fi.onchange=()=>upload([...fi.files]);
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over')}));
+drop.addEventListener('drop',e=>upload([...e.dataTransfer.files].filter(f=>f.type.startsWith('image/'))));
+
+function readAsDataURL(f){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>res(r.result); r.onerror=rej;
+    r.readAsDataURL(f);
+  });
+}
+
+async function upload(files){
+  if(!files.length) return;
+  $('bar').style.display='block';
+  let done=0;
+  for(const f of files){
+    $('status').textContent = `Загружаю ${f.name} (${done+1}/${files.length})…`;
+    try{
+      const dataUrl = await readAsDataURL(f);
+      const y = parseInt($('upYear').value,10);
+      const r = await api('/api/upload',{files:[{name:f.name,dataUrl,category:$('upCat').value,year:isNaN(y)?null:y}]});
+      if(!r.ok) toast(r.error||'Ошибка загрузки');
+    }catch{ toast('Не удалось загрузить '+f.name); }
+    done++;
+    $('barFill').style.width = Math.round(done/files.length*100)+'%';
+  }
+  $('status').textContent='';
+  setTimeout(()=>{$('bar').style.display='none';$('barFill').style.width='0'},600);
+  fi.value='';
+  toast(done>1?`Загружено фото: ${done}`:'Фото загружено');
+  refresh();
+}
+
+// ---------- настройки ----------
+async function saveSettings(){
+  const body={ title:$('setTitle').value, subtitle:$('setSubtitle').value };
+  const p=$('setPass').value;
+  if(p){ if(p.length<4){toast('Пароль слишком короткий');return;} body.password=p; }
+  await api('/api/settings',body);
+  $('setPass').value='';
+  toast('Настройки сохранены');
+}
+
+init();
+</script>
+</body>
+</html>
