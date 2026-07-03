@@ -265,9 +265,9 @@ async function saveSettings(){
   const body={ title:$('setTitle').value, subtitle:$('setSubtitle').value };
   const p=$('setPass').value;
   if(p){ if(p.length<4){toast('Пароль слишком короткий');return;} body.password=p; }
-  await api('/api/settings',body);
+  const r = await api('/api/settings',body);
   $('setPass').value='';
-  toast('Настройки сохранены');
+  toast(r.warning ? r.warning : 'Настройки сохранены');
 }
 
 init();

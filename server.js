@@ -39,6 +39,16 @@ const readJSON = (f, fallback) => {
 };
 const writeJSON = (f, data) => fs.writeFileSync(f, JSON.stringify(data, null, 2));
 
+// ---------- пароль админки ----------
+// Приоритет: переменная окружения ADMIN_PASSWORD (задаётся в панели хостинга,
+// переживает передеплои и не хранится в репозитории), иначе — data/config.json.
+function adminPassword() {
+  if (process.env.ADMIN_PASSWORD && process.env.ADMIN_PASSWORD.length >= 4) {
+    return process.env.ADMIN_PASSWORD;
+  }
+  return readJSON(CONFIG_JSON, {}).password;
+}
+
 // ---------- сессии (в памяти) ----------
 const sessions = new Set();
 function getToken(req) {
@@ -131,8 +141,7 @@ const server = http.createServer(async (req, res) => {
       // --- вход ---
       if (p === '/api/login') {
         const body = JSON.parse((await readBody(req, 64 * 1024)).toString('utf8') || '{}');
-        const cfg = readJSON(CONFIG_JSON, {});
-        if (body.password && body.password === cfg.password) {
+        if (body.password && body.password === adminPassword()) {
           const token = crypto.randomBytes(24).toString('hex');
           sessions.add(token);
           return sendJSON(res, 200, { ok: true }, {
@@ -221,9 +230,16 @@ const server = http.createServer(async (req, res) => {
         const cfg = readJSON(CONFIG_JSON, {});
         if (typeof body.title === 'string') cfg.title = body.title.slice(0, 100);
         if (typeof body.subtitle === 'string') cfg.subtitle = body.subtitle.slice(0, 200);
-        if (typeof body.password === 'string' && body.password.length >= 4) cfg.password = body.password;
+        let warning = null;
+        if (typeof body.password === 'string' && body.password.length >= 4) {
+          if (process.env.ADMIN_PASSWORD) {
+            warning = 'Пароль задан переменной окружения ADMIN_PASSWORD на хостинге — менять его нужно там, изменение здесь не подействует.';
+          } else {
+            cfg.password = body.password;
+          }
+        }
         writeJSON(CONFIG_JSON, cfg);
-        return sendJSON(res, 200, { ok: true });
+        return sendJSON(res, 200, { ok: true, warning });
       }
     }
 
